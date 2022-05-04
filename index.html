@@ -16,7 +16,7 @@
                 <div class="column w-75">
                     <div class="content">
                         <label class="label-input">Nome do Credor</label>
-                        <input class="input-text" type="text" style="padding-right: 50%;" name="nomeDoCredor" id="nomeDoCredor">
+                        <input class="input-text" type="text" style="padding-right: 50%;" name="nomeDoCredor" id="nomeDoCredor" required>
                     </div>
                 </div>
                 <div class="column w-75">
@@ -30,7 +30,7 @@
                     <div class="content">
                         <label class="label-input">CNPJ do Credor</label>
                         <input class="input-text" oninput="mascaras(this, 'cnpj')" style="padding-right: 10%;" type="text"
-                            name="cnpjCredor" id="cnpjCredor">
+                            name="cnpjCredor" id="cnpjCredor" >
                     </div>
                 </div>
             </div>
@@ -38,25 +38,25 @@
                 <div class="column">
                     <div class="content">
                         <label class="label-input">Valor:</label>
-                        <input class="input-text" type="number" name="valorNota" id="valorNota">
+                        <input class="input-text" type="number" name="valorNota" id="valorNota" required>
                     </div>
                 </div>
                 <div class="column">
                     <div class="content">
                         <label class="label-input">1º Vencimento</label>
-                        <input class="input-text" oninput="mascaras(this, 'data')" type="date" name="primeiroVencimento" id="primeiroVencimento">
+                        <input class="input-text" oninput="mascaras(this, 'data')" type="date" name="primeiroVencimento" id="primeiroVencimento" required>
                     </div>
                 </div>
                 <div class="column">
                     <div class="content">
                         <label class="label-input">Data Emissão</label>
-                        <input class="input-text" oninput="mascaras(this, 'data')" type="date" name="dataEmissao" id="dataEmissao">
+                        <input class="input-text" oninput="mascaras(this, 'data')" type="date" name="dataEmissao" id="dataEmissao" required>
                     </div>
                 </div>
                 <div class="column">
                     <div class="content">
                         <label class="label-input">Quantidade de Notas</label>
-                        <input class="input-text" type="number" name="quantidade" id="quantidade">
+                        <input class="input-text" type="number" name="quantidade" id="quantidade"required>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <div class="column w-75">
                     <div class="content">
                         <label>Nome do Devedor</label>
-                        <input class="input-text" style="padding-right: 50%;" type="text" name="nomeDevedor" id="nomeDevedor">
+                        <input class="input-text" style="padding-right: 50%;" type="text" name="nomeDevedor" id="nomeDevedor" required>
                     </div>
                 </div>
                 <div class="column w-75">
@@ -87,25 +87,25 @@
                 <div class="column">
                     <div class="content">
                         <label>CEP</label>
-                        <input class="input-text" oninput="mascaras(this, 'cep')" type="text" name="cep" id="cep">
+                        <input class="input-text" oninput="mascaras(this, 'cep')" type="text" name="cep" id="cep" required>
                     </div>
                 </div>
                 <div class="column">
                     <div class="content">
                         <label>Rua</label>
-                        <input class="input-text" type="text" name="rua" id="rua">
+                        <input class="input-text" type="text" name="rua" id="rua"required>
                     </div>
                 </div>
                 <div class="column">
                     <div class="content">
                         <label>Cidade</label>
-                        <input class="input-text" type="text" name="cidade" id="cidade">
+                        <input class="input-text" type="text" name="cidade" id="cidade"required>
                     </div>
                 </div>
                 <div class="column">
                     <div class="content">
                         <label>Estado</label>
-                        <select class="input-text" name="estado" id="estado">
+                        <select class="input-text" name="estado" id="estado"required>
                             <option value="">Selecione</option>
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
@@ -140,13 +140,13 @@
                 <div class="column">
                     <div class="content">
                         <label>Número</label>
-                        <input class="input-text" type="text" name="numero" id="numero">
+                        <input class="input-text" type="text" name="numero" id="numero"required>
                     </div>
                 </div>
                 <div class="column">
                     <div class="content">
                         <label>Bairro</label>
-                        <input class="input-text" type="text" name="bairro" id="bairro">
+                        <input class="input-text" type="text" name="bairro" id="bairro"required>
                     </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@
                 <div class="column w-50">
                     <div class="content">
                         <label>Ponto de Referência</label>
-                        <input class="input-text" type="text" style="padding-right: 100%;" name="referencia" id="referencia">
+                        <input class="input-text" type="text" style="padding-right: 100%;" name="referencia" id="referencia"required>
                     </div>
                 </div>
             </div>

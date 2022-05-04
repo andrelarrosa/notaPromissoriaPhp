@@ -8,8 +8,8 @@ function anoParaExtenso(data) {
 }
 
 function carregarNota() {
-    if(document.getElementById('nomeDoCredor').value == '' || (document.getElementById('cpfCredor').value == '' && document.getElementById('cnpjCredor').value == '') || document.getElementById('valorNota').value == '' || document.getElementById('primeiroVencimento').value == '' || document.getElementById('dataEmissao').value == '' || document.getElementById('nomeDevedor').value=='' || (document.getElementById('cpfDevedor').value == '' && document.getElementById('cnpjDevedor').value == '') || document.getElementById('cep').value == '' || document.getElementById('rua').value == '' || document.getElementById('cidade').value == '' || document.getElementById('estado').value == '' || document.getElementById('numero').value == '' || document.getElementById('bairro').value == '' || document.getElementById('referencia').value == ''){
-        alert("Preencha todos os campos!");
+    if((document.getElementById('cpfCredor').value == '' && document.getElementById('cnpjCredor').value == '') || (document.getElementById('cpfDevedor').value == '' && document.getElementById('cnpjDevedor').value == '')){
+        alert("Preencha os campos CPF/CNPJ!");
         return;
     }
     var nota = '';
