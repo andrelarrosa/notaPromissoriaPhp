@@ -5,51 +5,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 </head>
 <link rel="stylesheet" href="./style.css">
 
 <body>
 
     <?php
-    $nomeCredor = $_POST['nomeDoCredor'];
-    $cpfCnpjCredor = !empty($_POST['cpfCredor'])? $_POST['cpfCredor']: $_POST['cnpjCredor'];
-    $valorNota = $_POST['valorNota'];
-    $primeiroVencimento = $_POST['primeiroVencimento'];
-    $emissao = $_POST['dataEmissao'];
-    $nomeDevedor = $_POST['nomeDevedor'];
-    $cpfCnpjDevedor = $_POST['cpfDevedor']?:$_POST['cnpjDevedor'];
-    $cep = $_POST['cep'];
-    $rua = $_POST['rua'];
-    $cidade = $_POST['cidade'];
-    $estado = $_POST['estado'];
-    $numero = $_POST['numero'];
-    $bairro = $_POST['bairro'];
-    $referencia = $_POST['referencia'];
-    $quantidade = $_POST['quantidade']?:1;
-    for ($i = 1; $i <= $quantidade; $i++) {
-        $var = '
-        <div class="borda">
-        <p style="text-align: center;">
-            <b>NOTA PROMISSÓRIA (Nº '.$i.'   de   '.$quantidade.'  )</b>
-        </p>
-        <p>Vencimento: <b> '.$primeiroVencimento.'  </b>.</p>
-        <p><b>R$ '. strtoupper(valor_por_extenso($valorNota)) .' </b></p>
-        <p>No dia <b > '.$primeiroVencimento.'  </b> pagarei por esta via de NOTA PROMISSÓRIA a <b class="background">  '.$nomeCredor.'  </b>, CPF (ou CNPJ) nº   '.$cpfCnpjCredor.'   ou a sua ordem a quantia de   '.strtoupper(valor_por_extenso($valorNota)).'   reais.</p>
-        <p>Pagável na Rua  '.$rua.'  , nº   '.$numero.'   -   '.$bairro.'   na cidade de   '.$cidade.'   -   '.$estado.'  .</p>
-        <p>Emitente:  '.$nomeDevedor.'  , CPF (ou CNPJ) nº   '.$cpfCnpjDevedor.'  , com endereço à Rua   '.$rua.'  , nº   $numero   -   '.$bairro.'   na cidade de   '.$cidade.'   -   '.$estado.'   - CEP   '.$cep.'  .</p>
-        <p>'.$cidade.'   -   '.$estado.'  ,   '.$emissao.'  .</p>
-        <p>Referência:  '.$referencia.'</p>
-        <hr style="margin-left: 10%; margin-right: 10%; margin-top: 10%;">
-        <p style="text-align: center;"> '.$nomeDevedor.'  </p>
-    </div>
-    <br>';
-    echo $var;
-    echo '<button id="imprimir" class="btn btn-center" onclick="imprimir()" type="button">Imprimir</input>';
-
+    function data_por_extenso($data){
+        $date = explode('-', $data);
+        $dia_extenso = [
+            "01"   => "UM", 
+            "02"   => "DOIS", 
+            "03"   => "TRÊS", 
+            "04"   => "QUATRO", 
+            "05"   => "CINCO",
+            "06"   => "SEIS", 
+            "07"   =>"SETE",  
+            "08"   => "OITO", 
+            "09"   => "NOVE", 
+            "10"  => "DEZ",
+            "11"  => "ONZE",
+            "12"  => "DOZE",
+            "13"  => "TREZE",
+            "14"  => "QUATORZE",
+            "15"  => "QUINZE",
+            "16"  => "DEZESSEIS",
+            "17"  => "DEZESSETE",
+            "18"  => "DEZOITO",
+            "19"  => "DEZENOVE",
+            "20"  => "VINTE",
+            "21"  => "VINTE E UM",
+            "22"  => "VINTE E DOIS",
+            "23"  => "VINTE E TRÊS",
+            "24"  => "VINTE E QUATRO",
+            "25"  => "VINTE E CINCO",
+            "26"  => "VINTE E SEIS",
+            "27"  => "VINTE E SETE",
+            "28"  => "VINTE E OITO",
+            "29"  => "VINTE E NOVE",
+            "30"  => "TRINTA",
+            "31"  => "TRINTA E UM",
+        ];
+        $mes_extenso = array(
+            "01" => 'JANEIRO',
+            "02" => 'FEVEREIRO',
+            "03" => 'MARÇO',
+            "04" => 'ABRIL',
+            "05" => 'MAIO',
+            "06" => 'JUNHO',
+            "07" => 'JULHO',
+            "08" => 'AGOSTO',
+            "09" => 'SETEMBRO',
+            "10" => 'OUTUBRO',
+            "11" => 'NOVEMBRO',
+            "12" => 'DEZEMBRO'
+        );
+        return $dia_extenso[$date[2]]." DE ".$mes_extenso[$date[1]] . " DE ".$date[0];
     }
 
-    
+      
     function valor_por_extenso($v){
 		
         $v = filter_var($v, FILTER_SANITIZE_NUMBER_INT);
@@ -103,6 +117,49 @@
             return($rt ? trim( $rt ) : "zero");
      
     }
+
+    $nomeCredor = $_POST['nomeDoCredor'];
+    $cpfCnpjCredor = !empty($_POST['cpfCredor'])? $_POST['cpfCredor']: $_POST['cnpjCredor'];
+    $valorNota = $_POST['valorNota'];
+    $primeiroVencimento = $_POST['primeiroVencimento'];
+    $emissao = $_POST['dataEmissao'];
+    $nomeDevedor = $_POST['nomeDevedor'];
+    $cpfCnpjDevedor = $_POST['cpfDevedor']?:$_POST['cnpjDevedor'];
+    $cep = $_POST['cep'];
+    $rua = $_POST['rua'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
+    $numero = $_POST['numero'];
+    $bairro = $_POST['bairro'];
+    $referencia = $_POST['referencia'];
+    $quantidade = $_POST['quantidade']?:1;
+    $emissao = data_por_extenso($emissao);
+    $primeiroVencimento = data_por_extenso($primeiroVencimento);
+    for ($i = 1; $i <= $quantidade; $i++) {
+        $var = '
+        <div class="borda">
+        <p style="text-align: center;">
+            <b>NOTA PROMISSÓRIA (Nº '.$i.'   de   '.$quantidade.'  )</b>
+        </p>
+        <p>Vencimento: <b> '.$primeiroVencimento.'  </b>.</p>
+        <p><b>R$ '. strtoupper(valor_por_extenso($valorNota)) .' </b></p>
+        <p>No dia <b > '.$primeiroVencimento.'  </b> pagarei por esta via de NOTA PROMISSÓRIA a <b class="background">  '.$nomeCredor.'  </b>, CPF (ou CNPJ) nº   '.$cpfCnpjCredor.'   ou a sua ordem a quantia de   '.strtoupper(valor_por_extenso($valorNota)).'.</p>
+        <p>Pagável na Rua  '.$rua.'  , nº   '.$numero.'   -   '.$bairro.'   na cidade de   '.$cidade.'   -   '.$estado.'  .</p>
+        <p>Emitente:  '.$nomeDevedor.'  , CPF (ou CNPJ) nº   '.$cpfCnpjDevedor.'  , com endereço à Rua   '.$rua.'  , nº   $numero   -   '.$bairro.'   na cidade de   '.$cidade.'   -   '.$estado.'   - CEP   '.$cep.'  .</p>
+        <p>'.$cidade.'   -   '.$estado.'  ,   '.$emissao.'  .</p>
+        <p>Referência:  '.$referencia.'</p>
+        <hr style="margin-left: 10%; margin-right: 10%; margin-top: 10%;">
+        <p style="text-align: center;"> '.$nomeDevedor.'  </p>
+    </div>
+    <br>';
+    echo $var;
+
+    }
+    echo '<button id="imprimir" class="btn btn-center" onclick="imprimir()" type="button">Imprimir</input>';
+
+  
+
+    
     ?>
 </body>
 </html>
