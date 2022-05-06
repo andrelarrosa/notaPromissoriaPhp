@@ -47,7 +47,7 @@ function carregarNota() {
     }
 
     // document.getElementById('nota').appendChild(nota);
-    document.querySelector("#nota").innerHTML = nota;
+    document.querySelector("body").innerHTML = nota;
 }
 
 
